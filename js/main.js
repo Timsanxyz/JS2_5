@@ -24,6 +24,9 @@ const app = new Vue({
             console.log(product.id_product);
         },
         filter(){
+            if (this.userSearch == ""){
+                this.filtered = this.products; //возвращаем каталог если запрос пустой
+            }
             let regexp = new RegExp(this.userSearch, 'i');
             this.filtered = this.filtered.filter(el => regexp.test(el.product_name));
         }
